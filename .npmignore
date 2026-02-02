@@ -1,0 +1,8 @@
+src/
+Cargo.toml
+Cargo.lock
+build.rs
+target/
+.git/
+*.md
+.env*
