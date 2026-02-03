@@ -43,9 +43,8 @@ impl Task for VectorizeTask {
         MODEL.with(|m| {
             let model = m.borrow();
             let model = model.as_ref().expect("model initialized");
-            generate_embedding(model, &self.text).map_err(|e| {
-                napi::Error::from_reason(format!("Embedding failed: {}", e))
-            })
+            generate_embedding(model, &self.text)
+                .map_err(|e| napi::Error::from_reason(format!("Embedding failed: {}", e)))
         })
     }
 
