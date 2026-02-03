@@ -1,11 +1,11 @@
-# Addon Node.js NAPI-RS pour vectorizer — appel direct depuis Node sans HTTP
-# Voir https://napi.rs/docs/introduction/getting-started
+# vectorizer-napi — Standalone NAPI-RS addon for text embedding
+# https://napi.rs/docs/introduction/getting-started
 
 [package]
 name = "vectorizer-napi"
 version = "0.1.0"
 edition = "2021"
-description = "Node.js native addon for text embedding (vectorizer) via NAPI-RS"
+description = "Node.js native addon for text embedding via NAPI-RS (rust-bert, all-MiniLM-L6-v2)"
 authors = []
 license = "Apache-2.0"
 
@@ -15,7 +15,9 @@ crate-type = ["cdylib"]
 [dependencies]
 napi = "2"
 napi-derive = "2"
-vectorizer = { path = "../vectorizer" }
+rust-bert = "0.23"
+anyhow = "1"
+console = { version = "0.16", features = ["std"] }
 
 [build-dependencies]
 napi-build = "2"

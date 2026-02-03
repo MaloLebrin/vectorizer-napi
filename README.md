@@ -1,6 +1,6 @@
 # vectorizer-napi
 
-**NAPI-RS** addon for [vectorizer](../vectorizer): call Rust directly from Node.js with no HTTP service.
+**NAPI-RS** addon for text embedding: call Rust (rust-bert, all-MiniLM-L6-v2) directly from Node.js with no HTTP service. Standalone — no parent crate required.
 
 **Repository:** [https://github.com/MaloLebrin/vectorizer-napi](https://github.com/MaloLebrin/vectorizer-napi)
 
@@ -72,13 +72,13 @@ Default: `x86_64-apple-darwin`, `aarch64-apple-darwin`, `x86_64-pc-windows-msvc`
 
 - **Git:** [https://github.com/MaloLebrin/vectorizer-napi](https://github.com/MaloLebrin/vectorizer-napi)
 
-This directory is a **standalone Git repository**. It depends on the [vectorizer](../vectorizer) crate (Rust lib). If you clone only this repo, ensure `vectorizer` is available as a sibling directory (e.g. clone the parent workspace) or add it as a submodule:
+This repo is **standalone**: clone and build with no extra crates or submodules.
 
 ```bash
 git clone https://github.com/MaloLebrin/vectorizer-napi.git
 cd vectorizer-napi
-git submodule add <vectorizer-repo-url> vectorizer
-# then in Cargo.toml use: vectorizer = { path = "vectorizer" }
+npm install
+npm run build
 ```
 
 ## Documentation

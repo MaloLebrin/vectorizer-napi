@@ -7,7 +7,8 @@ use napi::bindgen_prelude::*;
 use napi_derive::napi;
 use std::cell::RefCell;
 
-use vectorizer::{create_model, generate_embedding, SentenceEmbeddingsModel, MODEL_NAME};
+mod embedding;
+use embedding::{create_model, generate_embedding, SentenceEmbeddingsModel, MODEL_NAME};
 
 // Modèle par thread : chaque worker du pool libuv charge le modèle au premier appel.
 thread_local! {

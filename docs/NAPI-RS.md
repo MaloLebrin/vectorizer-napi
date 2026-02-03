@@ -8,21 +8,12 @@ This document describes the **vectorizer-napi** addon: its architecture, use of 
 
 ## 1. Overview
 
-**vectorizer-napi** is a **native Node.js addon** (`.node` file) that exposes the vectorization logic of the Rust crate [vectorizer](../vectorizer):
+**vectorizer-napi** is a **standalone native Node.js addon** (`.node` file) that embeds text vectorization (rust-bert, all-MiniLM-L6-v2) directly in the crate:
 
 - **Input:** a string (text).
-- **Output:** an embedding vector (384 dimensions, **all-MiniLM-L6-v2** model).
+- **Output:** an embedding vector (384 dimensions).
 
-It is built with [NAPI-RS](https://napi.rs) (napi + napi-derive) and runs in the same Node.js process, with no HTTP service or `child_process`.
-
-### Compared to the HTTP service
-
-| Aspect | vectorizer-napi (NAPI) | vectorizer (HTTP) |
-|--------|------------------------|--------------------|
-| Process | Same process as Node | Separate process / container |
-| Latency | Direct call, no network | HTTP request (localhost or network) |
-| Deployment | `.node` binary in `node_modules` | Docker image or standalone binary |
-| Dependencies | Rust + libtorch at **build** time; at runtime only Node + `.node` | Same on the Rust server side |
+It is built with [NAPI-RS](https://napi.rs) (napi + napi-derive) and runs in the same Node.js process, with no HTTP service or `child_process`. No parent crate or submodule required — clone and build.
 
 ---
 
