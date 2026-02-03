@@ -16,6 +16,8 @@ crate-type = ["cdylib"]
 napi = "2"
 napi-derive = "2"
 rust-bert = "0.23"
+# Vendored OpenSSL for musl cross-compilation (avoids system OpenSSL)
+openssl-sys = { version = "0.9", features = ["vendored"] }
 anyhow = "1"
 console = { version = "0.16", features = ["std"] }
 
