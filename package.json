@@ -6,7 +6,8 @@
   "types": "index.d.ts",
   "scripts": {
     "build": "napi build --platform --release",
-    "build:debug": "napi build --platform"
+    "build:debug": "napi build --platform",
+    "lint": "oxlint ."
   },
   "napi": {
     "name": "vectorizer",
@@ -24,7 +25,8 @@
     "node": ">= 18"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^2.18.0"
+    "@napi-rs/cli": "^2.18.0",
+    "oxlint": "^1.14.0"
   },
   "license": "Apache-2.0"
 }
