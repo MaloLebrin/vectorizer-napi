@@ -8,9 +8,10 @@ use napi_derive::napi;
 use std::cell::RefCell;
 
 mod embedding;
-use embedding::{create_model, generate_embedding, SentenceEmbeddingsModel, MODEL_NAME};
+use embedding::{create_model, generate_embedding, MODEL_NAME};
+use rust_bert::pipelines::sentence_embeddings::SentenceEmbeddingsModel;
 
-// Modèle par thread : chaque worker du pool libuv charge le modèle au premier appel.
+// Model per thread: each libuv pool worker loads the model on first use.
 thread_local! {
     static MODEL: RefCell<Option<SentenceEmbeddingsModel>> = RefCell::new(None);
 }

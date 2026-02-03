@@ -6,8 +6,6 @@ use rust_bert::pipelines::sentence_embeddings::{
     SentenceEmbeddingsBuilder, SentenceEmbeddingsModel, SentenceEmbeddingsModelType,
 };
 
-pub use rust_bert::pipelines::sentence_embeddings::SentenceEmbeddingsModel;
-
 pub const MODEL_NAME: &str = "all-MiniLM-L6-v2";
 
 pub fn create_model() -> Result<SentenceEmbeddingsModel> {
