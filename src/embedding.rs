@@ -18,3 +18,13 @@ pub fn generate_embedding(model: &SentenceEmbeddingsModel, text: &str) -> Result
     let embeddings = model.encode(&[text])?;
     Ok(embeddings[0].clone())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn model_name_constant_is_correct() {
+        assert_eq!(MODEL_NAME, "all-MiniLM-L6-v2");
+    }
+}

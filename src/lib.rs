@@ -66,3 +66,23 @@ pub fn vectorize(text: String) -> AsyncTask<VectorizeTask> {
 pub fn model_name() -> String {
     MODEL_NAME.to_string()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn model_name_returns_expected_string() {
+        assert_eq!(model_name(), "all-MiniLM-L6-v2");
+    }
+
+    #[test]
+    fn embedding_conversion_f32_to_f64_preserves_values() {
+        let f32_vec = vec![1.0f32, 2.5f32, -0.5f32];
+        let f64_vec: Vec<f64> = f32_vec.iter().map(|x| *x as f64).collect();
+        assert_eq!(f64_vec.len(), 3);
+        assert!((f64_vec[0] - 1.0).abs() < 1e-10);
+        assert!((f64_vec[1] - 2.5).abs() < 1e-10);
+        assert!((f64_vec[2] - (-0.5)).abs() < 1e-10);
+    }
+}
