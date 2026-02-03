@@ -104,6 +104,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           tool: cargo-zigbuild
+      - name: Install Perl (openssl-sys vendored)
+        if: ${{ matrix.settings.host == 'windows-latest' }}
+        run: choco install strawberryperl -y
+        shell: pwsh
       - name: Setup toolchain
         run: ${{ matrix.settings.setup }}
         if: ${{ matrix.settings.setup }}

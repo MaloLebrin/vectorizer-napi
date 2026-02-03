@@ -22,6 +22,9 @@ console = { version = "0.16", features = ["std"] }
 # Use rustls instead of native-tls/OpenSSL to avoid OpenSSL build issues on Windows and musl.
 # Overrides transitive reqwest from cached-path (rust-bert).
 reqwest = { version = "0.11", default-features = false, features = ["rustls-tls", "json"] }
+# Vendored OpenSSL: reqwest feature unification still pulls native-tls/openssl from cached-path.
+# Vendored builds OpenSSL from source (needs Perl+Make on Windows; Ubuntu has them).
+openssl-sys = { version = "0.9", features = ["vendored"] }
 
 [build-dependencies]
 napi-build = "2"
