@@ -154,14 +154,17 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: create npm dirs
-        run: pnpm exec napi create-npm-dirs
+      - name: Create npm dirs
+        run: |
+          for target in x86_64-unknown-linux-gnu aarch64-apple-darwin; do
+            pnpm exec napi create-npm-dir -t "$target"
+          done
       - name: Download all artifacts
         uses: actions/download-artifact@v7
         with:
           path: artifacts
       - name: Move artifacts
-        run: pnpm artifacts
+        run: pnpm exec napi artifacts
       - name: List packages
         run: ls -R ./npm
         shell: bash
