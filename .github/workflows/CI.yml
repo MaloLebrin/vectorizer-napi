@@ -52,9 +52,6 @@ jobs:
       fail-fast: false
       matrix:
         settings:
-          - host: macos-latest
-            target: x86_64-apple-darwin
-            build: pnpm build --target x86_64-apple-darwin
           - host: windows-latest
             build: pnpm build --target x86_64-pc-windows-msvc
             target: x86_64-pc-windows-msvc
@@ -138,9 +135,6 @@ jobs:
           - host: macos-latest
             target: aarch64-apple-darwin
             architecture: arm64
-          - host: macos-latest
-            target: x86_64-apple-darwin
-            architecture: x64
         node:
           - '20'
           - '22'
