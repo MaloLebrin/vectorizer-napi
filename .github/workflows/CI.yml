@@ -47,6 +47,8 @@ jobs:
         run: cargo fmt -- --check
       - name: Clippy
         run: cargo clippy
+      - name: Unit tests
+        run: cargo test
   build:
     strategy:
       fail-fast: false
@@ -103,6 +105,8 @@ jobs:
           path: |
             ${{ env.APP_NAME }}.*.node
             ${{ env.APP_NAME }}.*.wasm
+            index.js
+            index.d.ts
           if-no-files-found: error
   test-macOS-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}

@@ -3,8 +3,8 @@
  * Run: pnpm test (after pnpm build)
  * Uses Node.js built-in test runner (node --test).
  */
-import { test, describe } from "node:test";
 import assert from "node:assert";
+import { describe, test } from "node:test";
 
 // Dynamic import - addon must be built first (pnpm build)
 const { modelName, vectorize } = await import("./index.js");
